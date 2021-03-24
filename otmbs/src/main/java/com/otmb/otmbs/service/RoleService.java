@@ -39,6 +39,22 @@ public class RoleService {
             return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
     }
 
+    @Transactional
+    public ResponseEntity<Object> addRoles(Role role) {
+
+        Role newRole = new Role();
+        newRole.setName(role.getName());
+        newRole.setDescription(role.getDescription());
+
+      //  newRole.setUsers(role.getUsers());
+        Role savedRole = roleRepository.save(newRole);
+        if (roleRepository.findByUsersId(savedRole.getId()).isPresent()) {
+            return ResponseEntity.accepted().body("Successfully Created Role and Users");
+        } else
+            return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
+    }
+
+
     /**
      * Delete a specified role given the id
      */

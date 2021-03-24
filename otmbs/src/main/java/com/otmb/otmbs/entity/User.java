@@ -13,8 +13,10 @@ public class User {
     private String firstName;
     private String lastName;
     private String mobile;
-    @Column(unique = true)
+
+   // @Column(unique = true)
     private String email;
+
     @ManyToOne
     @JsonIgnore
     private Role role;

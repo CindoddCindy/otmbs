@@ -14,8 +14,13 @@ public class Role {
     private String description;
 
 
+    //@OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "role_id")
+
     @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "users_id")
+
+
     private List<User> users;
 
 
